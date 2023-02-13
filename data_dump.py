@@ -2,12 +2,14 @@ import pymongo
 import pandas as pd
 import json
 
+
 client = pymongo.MongoClient("mongodb+srv://se2zT5RUfhSvQmau:se2zT5RUfhSvQmau@cluster0.8peshl5.mongodb.net/?retryWrites=true&w=majority")
 db = client.test
 
+
 DATA_FILE_PATH = (r"E:\ML_complete_project\insurance.csv")
-DATBASE_NAME = "INSURANCE1"
-COLLECTION_NAME = "INSURANCE_PROJECT1"
+DATBASE_NAME = "INSURANCE2"
+COLLECTION_NAME = "INSURANCE_PROJECT2"
 
 if __name__ == "__main__":
     df = pd.read_csv(DATA_FILE_PATH)
