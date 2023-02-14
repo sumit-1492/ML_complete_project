@@ -4,6 +4,7 @@ import os,sys
 from Insurance_Project.utils import get_collecttion_as_dataframe
 from Insurance_Project.entity.config_entity import DataIngestionConfig
 from Insurance_Project.entity import config_entity
+from Insurance_Project.components.data_ingestion import DataIngestion
 
 #def test_logger_and_exception():
     #try:
@@ -21,5 +22,7 @@ if __name__== "__main__":
         training_pipeline_config = config_entity.TrainingPipelineconfig()
         data_ingestion_config = config_entity.DataIngestionConfig(training_pipeline_config=training_pipeline_config)
         print(data_ingestion_config.to_dict())
+        data_ingestion = DataIngestion(data_ingestion_config=data_ingestion_config)
+        data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
     except Exception as e:
-        print(e)
+        raise InsuraneceException(e,sys)
