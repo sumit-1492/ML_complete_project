@@ -6,6 +6,7 @@ from datetime import datetime
 FILE_NAME = "insurance.csv"
 TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME =  "test.csv"
+TRANSFORMER_OBJECT_FILENAME = "transformer.pkl"
 
 class TrainingPipelineconfig:
     def __init__(self):
@@ -40,3 +41,10 @@ class DataValidationConfig:
         self.report_file_path = os.path.join(self.data_validation_dir,"report.yaml") ## reeport file can be csv, or yaml or json
         self.missing_threshold:float = 0.2
         self.base_file_path = os.path.join("insurance.csv")
+
+class DataTransformationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineconfig):
+        self.data_transformation_dir = os.path.join(training_pipeline_config.artifact_dir,"data_transformation")
+        self.transform_object_path = os.path.join(training_pipeline_config,"transformed",TRANSFORMER_OBJECT_FILENAME)
+        self.transforma_object_train_path = os.path.join(training_pipeline_config,"transformed",TRAIN_FILE_NAME.replace("csv","npz"))
+        self.transforma_object_test_path = os.path.join(training_pipeline_config,"transformed",TEST_FILE_NAME.replace("csv","npz"))
